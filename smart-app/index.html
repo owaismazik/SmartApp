@@ -193,7 +193,6 @@
         </div>
     </div>
 
-
     <!-- Required JS files to enable this page to embed within an MPage -->
     <!--
       Temporarily disable cerner-smart-embeddable-lib
@@ -211,53 +210,53 @@
     <!-- timeline javascript-->
     <script src='./src/js/timeline.js'></script>
     <script>
-            extractData().then(
-                //Display Patient Demographics and Observations if extractData was success
-                function (p) {
+        extractData().then(
+            //Display Patient Demographics and Observations if extractData was success
+            function (p) {
                 drawVisualization(p);
             },
-                function () {
+            function () {
                 $('#loading').hide();
-            $('#errors').html('<p> Failed to call FHIR Service </p>');
-        }
-);
+                $('#errors').html('<p> Failed to call FHIR Service </p>');
+            }
+        );
 
-            $(document).ready(function () {
-                console.log('---------------test16--------------');
+        $(document).ready(function () {
+            console.log('---------------test16--------------');
             //timeline();
-            });
+        });
 
-            var checkboxesVisible = false;
-            function showCheckboxOptions() {
-                var checkboxes = document.getElementById("checkboxEventList");
+        var checkboxesVisible = false;
+        function showCheckboxOptions() {
+            var checkboxes = document.getElementById("checkboxEventList");
             var eventSelect = document.getElementById("eventSelect");
-                if (!checkboxesVisible) {
+            if (!checkboxesVisible) {
                 eventSelect.innerText = eventSelect.innerText.replace("▼", "▲");
-            checkboxes.style.display = '';
-            checkboxesVisible = true;
-        }
-                else {
+                checkboxes.style.display = '';
+                checkboxesVisible = true;
+            }
+            else {
                 eventSelect.innerText = eventSelect.innerText.replace("▲", "▼");
-            checkboxes.style.display = 'none';
-            checkboxesVisible = false;
+                checkboxes.style.display = 'none';
+                checkboxesVisible = false;
+            }
         }
-}
 
-var yearVisible = false;
-            function showyearOptions() {
-                var checkboxes = document.getElementById("yearEventList");
+        var yearVisible = false;
+        function showyearOptions() {
+            var checkboxes = document.getElementById("yearEventList");
             var eventSelect = document.getElementById("yearSelect");
-                if (!yearVisible) {
+            if (!yearVisible) {
                 eventSelect.innerText = eventSelect.innerText.replace("▼", "▲");
-            checkboxes.style.display = '';
-            yearVisible = true;
-        }
-                else {
+                checkboxes.style.display = '';
+                yearVisible = true;
+            }
+            else {
                 eventSelect.innerText = eventSelect.innerText.replace("▲", "▼");
-            checkboxes.style.display = 'none';
-            yearVisible = false;
+                checkboxes.style.display = 'none';
+                yearVisible = false;
+            }
         }
-}
 
     </script>
 </body>

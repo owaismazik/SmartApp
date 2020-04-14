@@ -270,275 +270,275 @@
         $("#timelinecontrolnew").show();
     }
 
-    function Device() {
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function Device() {
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientDevice",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientDevice",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('DeviceID')) {
-                        item.id = dataSet.DeviceID;
-                    }
-                    item.name = dataSet.Title;
+    //                if (dataSet.hasOwnProperty('DeviceID')) {
+    //                    item.id = dataSet.DeviceID;
+    //                }
+    //                item.name = dataSet.Title;
 
-                    if (dataSet.hasOwnProperty('RecordedDate')) {
-                        item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 5;
-                    item.entity = "Device";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
+    //                if (dataSet.hasOwnProperty('RecordedDate')) {
+    //                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 5;
+    //                item.entity = "Device";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
+    //}
 
-    function Encounter() {
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function Encounter() {
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientEncounter",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientEncounter",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('EncounterId')) {
-                        item.id = dataSet.EncounterId;
-                    }
-                    item.name = dataSet.Title;
+    //                if (dataSet.hasOwnProperty('EncounterId')) {
+    //                    item.id = dataSet.EncounterId;
+    //                }
+    //                item.name = dataSet.Title;
 
-                    if (dataSet.hasOwnProperty('RecordedDate')) {
-                        item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 6;
-                    item.entity = "Encounter";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
+    //                if (dataSet.hasOwnProperty('RecordedDate')) {
+    //                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 6;
+    //                item.entity = "Encounter";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
+    //}
 
-    function Procedure() {
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function Procedure() {
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientProcedure",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientProcedure",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('ProcedureID')) {
-                        item.id = dataSet.ProcedureID;
-                    }
-                    item.name = dataSet.Title;
+    //                if (dataSet.hasOwnProperty('ProcedureID')) {
+    //                    item.id = dataSet.ProcedureID;
+    //                }
+    //                item.name = dataSet.Title;
 
-                    if (dataSet.hasOwnProperty('RecordedDate')) {
-                        item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 7;
-                    item.entity = "Procedure";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
+    //                if (dataSet.hasOwnProperty('RecordedDate')) {
+    //                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 7;
+    //                item.entity = "Procedure";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
+    //}
 
-    function ProcedureRequest() {
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function ProcedureRequest() {
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientProcedureRequest",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientProcedureRequest",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('ProcedureRequestID')) {
-                        item.id = dataSet.ProcedureRequestID;
-                    }
-                    item.name = dataSet.Title;
+    //                if (dataSet.hasOwnProperty('ProcedureRequestID')) {
+    //                    item.id = dataSet.ProcedureRequestID;
+    //                }
+    //                item.name = dataSet.Title;
 
-                    if (dataSet.hasOwnProperty('RecordedDate')) {
-                        item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 13;
-                    item.entity = "ProcedureRequest";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
+    //                if (dataSet.hasOwnProperty('RecordedDate')) {
+    //                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 13;
+    //                item.entity = "ProcedureRequest";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
+    //}
 
-    function Condition() {       
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function Condition() {       
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientCondition",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientCondition",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('ConditionID')) {
-                        item.id = dataSet.ConditionID;
-                    }
-                    item.name = dataSet.Title;
+    //                if (dataSet.hasOwnProperty('ConditionID')) {
+    //                    item.id = dataSet.ConditionID;
+    //                }
+    //                item.name = dataSet.Title;
 
-                    if (dataSet.hasOwnProperty('RecordedDate')) {
-                        item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 8;
-                    item.entity = "Condition";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
+    //                if (dataSet.hasOwnProperty('RecordedDate')) {
+    //                    item.date = moment.utc(dataSet.RecordedDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.RecordedDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 8;
+    //                item.entity = "Condition";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
+    //}
 
-    function CarePlan() {
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function CarePlan() {
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientCarePlans",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientCarePlans",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('CarePlanID')) {
-                        item.id = dataSet.CarePlanID;
-                    }
-                    item.name = dataSet.Title;
+    //                if (dataSet.hasOwnProperty('CarePlanID')) {
+    //                    item.id = dataSet.CarePlanID;
+    //                }
+    //                item.name = dataSet.Title;
 
-                    if (dataSet.hasOwnProperty('STartDate')) {
-                        item.date = moment.utc(dataSet.STartDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.STartDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 9;
-                    item.entity = "Care Plan";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
+    //                if (dataSet.hasOwnProperty('STartDate')) {
+    //                    item.date = moment.utc(dataSet.STartDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.STartDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 9;
+    //                item.entity = "Care Plan";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
+    //}
 
     function Allergy() {
         var patient = {}
@@ -587,52 +587,52 @@
 
     }
 
-    function Observation() {
-        var patient = {}
-        patient.patientId = pid;
-        patient.startDate = currentStartDate;
-        patient.endDate = currentEndDate;
+    //function Observation() {
+    //    var patient = {}
+    //    patient.patientId = pid;
+    //    patient.startDate = currentStartDate;
+    //    patient.endDate = currentEndDate;
 
-        $.ajax({
-            url: $("#hdnPatientChartAPIURL").val() + "getPatientObservationCRM",
-            method: "POST",
-            async: false,
-            dataType: "json",
-            data: JSON.stringify(patient),
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            cache: false,
-            beforeSend: function (xhr) {
-                /* Authorization header */
-                xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
-            },
-            success: function (data) {
-                for (var i = 0; i < data.data.records.length; i++) {
-                    var dataSet = data.data.records[i];
-                    var item = {};
+    //    $.ajax({
+    //        url: $("#hdnPatientChartAPIURL").val() + "getPatientObservationCRM",
+    //        method: "POST",
+    //        async: false,
+    //        dataType: "json",
+    //        data: JSON.stringify(patient),
+    //        crossDomain: true,
+    //        contentType: "application/json; charset=utf-8",
+    //        cache: false,
+    //        beforeSend: function (xhr) {
+    //            /* Authorization header */
+    //            xhr.setRequestHeader("Authorization", $("#AuthorizationToken").val());
+    //        },
+    //        success: function (data) {
+    //            for (var i = 0; i < data.data.records.length; i++) {
+    //                var dataSet = data.data.records[i];
+    //                var item = {};
 
-                    if (dataSet.hasOwnProperty('ObservationID')) {
-                        item.id = dataSet.ObservationID;
-                    }
-                    item.name = dataSet.Description;
+    //                if (dataSet.hasOwnProperty('ObservationID')) {
+    //                    item.id = dataSet.ObservationID;
+    //                }
+    //                item.name = dataSet.Description;
 
-                    if (dataSet.hasOwnProperty('IssuedDate')) {
-                        item.date = moment.utc(dataSet.IssuedDate).format('MM/DD/YYYY');
-                        item.dateTime = moment.utc(dataSet.IssuedDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                    item.type = 12;
-                    item.entity = "Observation";
-                    list.push(item);
-                };
-                return Promise.resolve();
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
+    //                if (dataSet.hasOwnProperty('IssuedDate')) {
+    //                    item.date = moment.utc(dataSet.IssuedDate).format('MM/DD/YYYY');
+    //                    item.dateTime = moment.utc(dataSet.IssuedDate).format('YYYY-MM-DD HH:mm:ss');
+    //                }
+    //                item.type = 12;
+    //                item.entity = "Observation";
+    //                list.push(item);
+    //            };
+    //            return Promise.resolve();
+    //        },
+    //        error: function () {
+    //            console.log("error");
+    //        }
+    //    });
 
 
-    }
+    //}
 
     function getPatientRegistrationDate() {
 

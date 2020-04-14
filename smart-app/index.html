@@ -64,7 +64,7 @@
             <div class="row mzknav">
                 <img src="./src/images/mazik_logo-mazikcare.png" alt='' class="mz-logo" />
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-md-12">
                     <div class="patientdetailheading">
                         <h1 class="mzkheading">
@@ -72,7 +72,7 @@
                         </h1>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="coverbg row">
                 <div class="col-md-4">
@@ -167,7 +167,6 @@
                         </div>
 
                         <div class="timelinecontrolnew" style="display:none">
-
                             <div class="scrollbar" id="style-2">
                                 <div class="force-overflow">
                                     <div class="page">
@@ -177,37 +176,33 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
 
                         <br /><br />
                     </div>
                 </div>
             </div>
-            <div class="  footer">
+            <!--<div class="  footer">
                 <span>
                     mazik care
                 </span>
-            </div>
+            </div>-->
         </div>
     </div>
 
+
     <!-- Required JS files to enable this page to embed within an MPage -->
+
+
     <!--
       Temporarily disable cerner-smart-embeddable-lib
       <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
       <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
     -->
-    <!-- Application-level javascript-->
     <script src='./src/js/example-smart-app.js'></script>
-    <!-- FHIR Client JS Library -->
     <script src='./lib/js/fhir-client-v0.1.12.js'></script>
-    <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
     <!-- https://github.com/cerner/fhir-client-cerner-additions -->
     <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
-    <!-- timeline javascript-->
     <script src='./src/js/timeline.js'></script>
     <script>
         extractData().then(
@@ -220,6 +215,7 @@
                 $('#errors').html('<p> Failed to call FHIR Service </p>');
             }
         );
+
 
         $(document).ready(function () {
             console.log('---------------test16--------------');

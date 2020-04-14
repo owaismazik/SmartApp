@@ -77,7 +77,7 @@
                     ret.resolve(p);
 
                     CreatePatient(patient.id);
-
+                    debugger
                     if (obv != null) {
                         if (obv.length > 0) {
                             for (var i = 0; i <= 10; i++) {
@@ -93,153 +93,153 @@
                     }
 
 
-                    var alrgy = smart.patient.api.fetchAll({
-                        type: 'AllergyIntolerance',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var alrgy = smart.patient.api.fetchAll({
+                    //    type: 'AllergyIntolerance',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(alrgy).done(function (Allergy) {
-                        if (Allergy != null) {
-                            if (Allergy.length > 0) {
-                                for (var i = 0; i <= Allergy.length; i++) {
-                                    if (Allergy[i] != null) {
-                                        if (Allergy[i] != undefined) {
-                                            var title = Allergy[i].substance.coding[0].display;
-                                            var recordeddate = Allergy[i].recordedDate;
-                                            CreateAllergy(Allergy[i].id, $("#CRMpatietid").val(), "Allergy - " + title, recordeddate);
-                                        }
-                                    }
-                                }
-                            }
-                        }                        
-                    });
+                    //$.when(alrgy).done(function (Allergy) {
+                    //    if (Allergy != null) {
+                    //        if (Allergy.length > 0) {
+                    //            for (var i = 0; i <= Allergy.length; i++) {
+                    //                if (Allergy[i] != null) {
+                    //                    if (Allergy[i] != undefined) {
+                    //                        var title = Allergy[i].substance.coding[0].display;
+                    //                        var recordeddate = Allergy[i].recordedDate;
+                    //                        CreateAllergy(Allergy[i].id, $("#CRMpatietid").val(), "Allergy - " + title, recordeddate);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }                        
+                    //});
 
-                    var cond = smart.patient.api.fetchAll({
-                        type: 'Condition',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var cond = smart.patient.api.fetchAll({
+                    //    type: 'Condition',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(cond).done(function (condition) {                       
-                        if (condition != null) {
-                            if (condition.length > 0) {
-                                for (var i = 0; i <= condition.length; i++) {
-                                    if (condition[i] != null) {
-                                        if (condition[i] != undefined) {
-                                            var title = condition[i].code.coding[0].display;
-                                            var recordeddate = condition[i].onsetDateTime;
-                                            CreateCondition(condition[i].id, $("#CRMpatietid").val(), "Condition - " + title, recordeddate);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });                    
+                    //$.when(cond).done(function (condition) {                       
+                    //    if (condition != null) {
+                    //        if (condition.length > 0) {
+                    //            for (var i = 0; i <= condition.length; i++) {
+                    //                if (condition[i] != null) {
+                    //                    if (condition[i] != undefined) {
+                    //                        var title = condition[i].code.coding[0].display;
+                    //                        var recordeddate = condition[i].onsetDateTime;
+                    //                        CreateCondition(condition[i].id, $("#CRMpatietid").val(), "Condition - " + title, recordeddate);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});                    
 
-                    var proc = smart.patient.api.fetchAll({
-                        type: 'Procedure',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var proc = smart.patient.api.fetchAll({
+                    //    type: 'Procedure',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(proc).done(function (procedure) {
-                        if (procedure != null) {
-                            if (procedure.length > 0) {
-                                for (var i = 0; i <= procedure.length; i++) {
-                                    if (procedure[i] != null) {
-                                        if (procedure[i] != undefined) {
-                                            var title = procedure[i].code.coding[0].display;
-                                            var recordeddate = '';
+                    //$.when(proc).done(function (procedure) {
+                    //    if (procedure != null) {
+                    //        if (procedure.length > 0) {
+                    //            for (var i = 0; i <= procedure.length; i++) {
+                    //                if (procedure[i] != null) {
+                    //                    if (procedure[i] != undefined) {
+                    //                        var title = procedure[i].code.coding[0].display;
+                    //                        var recordeddate = '';
 
-                                            if (procedure[i].hasOwnProperty("performedDateTime")) {
-                                                recordeddate = procedure[i].performedDateTime;
-                                            }
-                                            if (procedure[i].hasOwnProperty("performedPeriod")) {
-                                                recordeddate = procedure[i].performedPeriod.start;
-                                            }
+                    //                        if (procedure[i].hasOwnProperty("performedDateTime")) {
+                    //                            recordeddate = procedure[i].performedDateTime;
+                    //                        }
+                    //                        if (procedure[i].hasOwnProperty("performedPeriod")) {
+                    //                            recordeddate = procedure[i].performedPeriod.start;
+                    //                        }
 
-                                            CreateProcedure(procedure[i].id, $("#CRMpatietid").val(), "Procedure - " + title, recordeddate);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    //                        CreateProcedure(procedure[i].id, $("#CRMpatietid").val(), "Procedure - " + title, recordeddate);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
-                    var procReq = smart.patient.api.fetchAll({
-                        type: 'ProcedureRequest',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var procReq = smart.patient.api.fetchAll({
+                    //    type: 'ProcedureRequest',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(procReq).done(function (procedureRequest) {
-                        if (procedureRequest != null) {
-                            if (procedureRequest.length > 0) {
-                                for (var i = 0; i <= procedureRequest.length; i++) {
-                                    if (procedureRequest[i] != null) {
-                                        if (procedureRequest[i] != undefined) {
-                                            var title = procedureRequest[i].code.coding[0].display;
-                                            var recordeddate = procedureRequest[i].scheduledPeriod.start;                                            
-                                            CreateProcedureRequest(procedureRequest[i].id, $("#CRMpatietid").val(), "procedureRequest - " + title, recordeddate);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    //$.when(procReq).done(function (procedureRequest) {
+                    //    if (procedureRequest != null) {
+                    //        if (procedureRequest.length > 0) {
+                    //            for (var i = 0; i <= procedureRequest.length; i++) {
+                    //                if (procedureRequest[i] != null) {
+                    //                    if (procedureRequest[i] != undefined) {
+                    //                        var title = procedureRequest[i].code.coding[0].display;
+                    //                        var recordeddate = procedureRequest[i].scheduledPeriod.start;                                            
+                    //                        CreateProcedureRequest(procedureRequest[i].id, $("#CRMpatietid").val(), "procedureRequest - " + title, recordeddate);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
-                    var enco = smart.patient.api.fetchAll({
-                        type: 'Encounter',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var enco = smart.patient.api.fetchAll({
+                    //    type: 'Encounter',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(enco).done(function (encounter) {
-                        if (encounter != null) {
-                            if (encounter.length > 0) {
-                                for (var i = 0; i <= encounter.length; i++) {
-                                    if (encounter[i] != null) {
-                                        if (encounter[i] != undefined) {
-                                            var title = encounter[i].type[0].text;
-                                            var recordeddate = encounter[i].period.start;
-                                            CreateEncounter(encounter[i].id, $("#CRMpatietid").val(), "Encounter - " + title, recordeddate);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
+                    //$.when(enco).done(function (encounter) {
+                    //    if (encounter != null) {
+                    //        if (encounter.length > 0) {
+                    //            for (var i = 0; i <= encounter.length; i++) {
+                    //                if (encounter[i] != null) {
+                    //                    if (encounter[i] != undefined) {
+                    //                        var title = encounter[i].type[0].text;
+                    //                        var recordeddate = encounter[i].period.start;
+                    //                        CreateEncounter(encounter[i].id, $("#CRMpatietid").val(), "Encounter - " + title, recordeddate);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
 
-                    var devi = smart.patient.api.fetchAll({
-                        type: 'Device',
-                        query: {
-                            patient: patient.id
-                        }
-                    });
+                    //var devi = smart.patient.api.fetchAll({
+                    //    type: 'Device',
+                    //    query: {
+                    //        patient: patient.id
+                    //    }
+                    //});
 
-                    $.when(devi).done(function (device) {
-                        debugger;
-                        if (device != null) {
-                            if (device.length > 0) {
-                                for (var i = 0; i <= device.length; i++) {
-                                    if (device[i] != null) {
-                                        if (device[i] != undefined) {
-                                            var title = device[i].type.text;
-                                            var recordeddate = device[i].meta.lastUpdated;
-                                            CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
-
+                    //$.when(devi).done(function (device) {
+                    //    debugger;
+                    //    if (device != null) {
+                    //        if (device.length > 0) {
+                    //            for (var i = 0; i <= device.length; i++) {
+                    //                if (device[i] != null) {
+                    //                    if (device[i] != undefined) {
+                    //                        var title = device[i].type.text;
+                    //                        var recordeddate = device[i].meta.lastUpdated;
+                    //                        CreateDevice(device[i].id, $("#CRMpatietid").val(), "Device - " + title, recordeddate);
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //});
+                    debugger;
                     var cp = smart.patient.api.fetchAll({
                         type: 'CarePlan',
                         query: {
@@ -249,6 +249,7 @@
                     });
 
                     $.when(cp).done(function (careplan) {
+                        debugger
                         if (careplan != null) {
                             if (careplan.length > 0) {
                                 for (var i = 0; i <= 10; i++) {

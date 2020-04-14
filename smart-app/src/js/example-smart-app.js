@@ -94,7 +94,7 @@
                     }
 
 
-s
+
                     var cond = smart.patient.api.fetchAll({
                         type: 'Condition',
                         query: {

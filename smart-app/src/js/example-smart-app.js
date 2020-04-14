@@ -218,29 +218,29 @@
                     //        }
                     //    }
                     //});
-                    //debugger;
-                    //var cp = smart.patient.api.fetchAll({
-                    //    type: 'CarePlan',
-                    //    query: {
-                    //        patient: patient.id
-                    //        //,category: 'assess-plan'
-                    //    }
-                    //});
+                    debugger;
+                    var cp = smart.patient.api.fetchAll({
+                        type: 'CarePlan',
+                        query: {
+                            patient: patient.id
+                            //,category: 'assess-plan'
+                        }
+                    });
 
-                    //$.when(cp).done(function (careplan) {
-                    //    debugger
-                    //    if (careplan != null) {
-                    //        if (careplan.length > 0) {
-                    //            for (var i = 0; i <= 10; i++) {
-                    //                if (careplan[i] != null) {
-                    //                    if (careplan[i] != undefined) {
-                    //                        CreateCarePlan(careplan[i].id, $("#CRMpatietid").val(), fname + " " + lname + " Care Plan", fname + " " + lname + " Care Plan", careplan[i].period.start, careplan[i].period.start);
-                    //                    }
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //});
+                    $.when(cp).done(function (careplan) {
+                        debugger
+                        if (careplan != null) {
+                            if (careplan.length > 0) {
+                                for (var i = 0; i <= 10; i++) {
+                                    if (careplan[i] != null) {
+                                        if (careplan[i] != undefined) {
+                                            CreateCarePlan(careplan[i].id, $("#CRMpatietid").val(), fname + " " + lname + " Care Plan", fname + " " + lname + " Care Plan", careplan[i].period.start, careplan[i].period.start);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
 
 
                     setTimeout(function () {

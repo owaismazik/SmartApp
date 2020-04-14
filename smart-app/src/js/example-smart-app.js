@@ -9,6 +9,7 @@
 
         function onReady(smart) {
             debugger;
+            //starting from here
             if (smart.hasOwnProperty('patient')) {
                 var patient = smart.patient;
                 var pt = patient.read();
@@ -55,11 +56,11 @@
                     var ldl = byCodes('2089-1');
 
                     var p = defaultPatient();
+                    //bio data of patient setting here
                     p.birthdate = patient.birthDate;
                     p.gender = gender;
                     p.fname = fname;
-                    //p.lname = lname;
-                    p.lname = 'KHAN';
+                    p.lname = lname;
                     p.phone = phone;
                     p.email = email;
                     p.height = getQuantityValueAndUnit(height[0]);

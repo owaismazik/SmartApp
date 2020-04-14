@@ -9,7 +9,7 @@
 
         function onReady(smart) {
             debugger;
-            //test
+            //test 11
             //starting from here
             if (smart.hasOwnProperty('patient')) {
                 var patient = smart.patient;

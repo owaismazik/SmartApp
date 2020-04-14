@@ -9,8 +9,6 @@
 
         function onReady(smart) {
             debugger;
-            //test 11
-            //starting from here
             if (smart.hasOwnProperty('patient')) {
                 var patient = smart.patient;
                 var pt = patient.read();
